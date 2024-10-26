@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+        /* Logo styling */
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 50px;
+            font-size: 24px;
+            font-weight: 400;
+            font-family: 'Raleway', sans-serif;
+            text-decoration: none;
+            z-index: 10; /* Added z-index */
+        }
+
+        .logo .mindful {
+            color: white;
+            font-weight: 300;
+        }
+
+        .logo a {
+            text-decoration: none; /* This removes underline */
+        }
+
+        .logo .engineer {
+            color: #4CAF50; /* Green color for "engineer" */
+            font-weight: 400;
+        }
+
+        /* Navigation Menu Styling */
+        nav {
+            position: absolute;
+            top: 20px;
+            right: 50px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 400;
+            z-index: 10; /* Added z-index */
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #4CAF50;
+        }
+
+        /* Full-screen video background */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Keep the video behind */
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 800px;
+            padding: 30px;
+            margin: 0 auto;
+            min-height: 100vh;
+            position: relative;
+            z-index: 5; /* Added z-index */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: #4CAF50;
+            margin: 10px auto 0;
+        }
+
+        .contact-info, .contact-form {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-info h2, .contact-form h2 {
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #4CAF50;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 15px 0;
+            font-size: 1.1em;
+        }
+
+        li strong {
+            color: #4CAF50;
+        }
+
+        label {
+            display: block;
+            color: #fff;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        input[type="text"], 
+        input[type="email"], 
+        textarea {
+            width: 100%;
+            padding: 15px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        input[type="text"]:focus, 
+        input[type="email"]:focus, 
+        textarea:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: #111;
+            color: #fff;
+            padding: 40px 20px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        .footer-column {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #fff;
+        }
+        
+        .footer-column p {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .social-icons a {
+            color: #ccc;
+            font-size: 1.2rem;
+        }
+        
+        .social-icons a:hover {
+            color: #fff;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        .footer-bottom p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <video class="video-background" autoplay muted loop>
+        <source src="6478593_Closeup_View_3840x2160.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Logo -->
+    <div class="logo">
+        <a href="hero.html">
+            <span class="mindful">mindful</span><br>
+            <span class="engineer">engineer</span>
+        </a>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <ul>
+            <li><a href="hero.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blogs.html">AI Blogs</a></li>
+                <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Connect with Us</h1>
+        <p>If you have any questions, feel free to reach out!</p>
+
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:support@mindfulengineer.ai">support@mindfulengineer.ai</a></li>
+                <li><strong>Phone:</strong> <a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                <li><strong>Address:</strong> 123 Mindful St, Mindful City, CA 12345</li>
+            </ul>
+        </div>
+
+        <div class="contact-form">
+            <h2>Get in Touch</h2>
+            <form action="submit_form.php" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Mindfulness</h3>
+                <ul>
+                    <li><a href="#">Mindfulness</a></li>
+                    <li><a href="#">Kriya Yoga</a></li>
+                    <li><a href="#">Science of Chakras</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>AI and Tech Resources</h3>
+                <ul>
+                    <li><a href="#">AI and Tech Resources</a></li>
+                    <li><a href="#">System Design</a></li>
+                    <li><a href="#">DSA</a></li>
+                    <li><a href="#">Books and Reading materials</a></li>
+                    <li><a href="#">Software Security</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p>support@mindfulengineer.ai</p>
+                <div class="social-icons">
+                    <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiXN9xSEe8unzPBEQOeAKXd9Q55efGHGB9BA&s" alt="Facebook" width="24" height="24"></a>
+                    <a href="#"><img src="https://static01.nyt.com/images/2014/08/10/magazine/10wmt/10wmt-superJumbo-v4.jpg" alt="Twitter" width="24" height="24"></a>
+                    <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMgfKNwFj7O66Qn-tIw87Yzo1A3DNh9rGq5g&s" alt="Instagram" width="24" height="24"></a>
+                    <a href="#"><img src="https://img.freepik.com/premium-vector/linkedin-round-logo-vector_667864-108.jpg" alt="LinkedIn" width="24" height="24"></a>
+                    <a href="#"><img src="https://yt3.googleusercontent.com/584JjRp5QMuKbyduM_2k5RlXFqHJtQ0qLIPZpwbUjMJmgzZngHcam5JMuZQxyzGMV5ljwJRl0Q=s900-c-k-c0x00ffffff-no-rj" alt="YouTube" width="24" height="24"></a>
+                </div>                
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2024 Mindful Engineer</p>
+        </div>
+    </footer>
+</body>
+</html>

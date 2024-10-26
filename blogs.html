@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindful Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        /* Reset default styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Navbar Styles */
+        header {
+            background-color: #0A0A1A;
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #69c143;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li {
+            display: inline-block;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: #007BFF;
+            border-radius: 5px;
+        }
+
+        .menu-icon {
+            display: none;
+        }
+
+        .menu-icon i {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* Category Links */
+        .categories {
+            background-color: #F5F5F5;
+            padding: 20px 0;
+            margin-top: 80px; /* Extra margin for space below navbar */
+            position: relative;
+            top: 30px;
+        }
+
+        .categories .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .categories a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .categories a:hover {
+            text-decoration: underline;
+        }
+
+        /* Blog Post Section */
+        .blog-post {
+            padding: 50px 0;
+            margin-top: 20px;
+        }
+
+        .blog-post .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .post {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .post img {
+            max-width: 150px; /* Adjust size as needed */
+            height: 150px;
+            border-radius: 50%; /* Make images circular */
+            object-fit: cover;
+        }
+
+        .post-content {
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .post-content h2 {
+            font-size: 1.5rem;
+            color: #0A0A1A;
+            margin-bottom: 10px;
+        }
+
+        .post-content p {
+            margin: 10px 0;
+            color: #666;
+        }
+
+        .post-content a {
+            color: #9fab23;
+        }
+
+        .read-more {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2d8e5c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        /* Adjust header background transparency */
+header {
+    transition: background-color 0.3s;
+}
+
+header.scrolled {
+    background-color: rgba(10, 10, 26, 0.9); /* Less transparent as you scroll */
+}
+
+/* Blog post hover effect */
+.post {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.post.in-view {
+    transform: scale(1.02);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+footer {
+    background-color: #111;
+    color: #fff;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-column {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.footer-column h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer-column ul li a:hover {
+    color: #fff;
+}
+
+.footer-column p {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icons a {
+    color: #ccc;
+    font-size: 1.2rem;
+}
+
+.social-icons a:hover {
+    color: #fff;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+
+        .read-more:hover {
+            background-color: #bebdbd;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-icon {
+                display: block;
+                cursor: pointer;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                background-color: #0A0A1A;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 200px;
+            }
+
+            .nav-links li {
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .post {
+                flex-direction: column;
+            }
+
+            .post img {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+            }
+
+            .post-content {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar Section -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">mindful <span><br>engineer</span></div>
+            <ul class="nav-links">
+                <li><a href="hero.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blogs.html">AI Blogs</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="menu-icon" id="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <a href="#">All</a>
+            <a href="#">Artificial Intelligence</a>
+            <a href="#">Health</a>
+            <a href="#">Health Tech</a>
+            <a href="#">Mindfulness</a>
+        </div>
+    </section>
+
+    <!-- Blog Post Section -->
+    <section class="blog-post">
+        <div class="container">
+            <!-- First Post -->
+            <div class="post">
+                <img src="https://www.culturemonkey.io/employee-engagement/content/images/2023/09/mindful-leadership.png" alt="Mindfulness for Decision Making">
+                <div class="post-content">
+                    <h2>Mindfulness for Better Decision-Making: A Path to Clarity and Confidence</h2>
+                    <p>
+                        <a href="#">Mindfulness</a> / <a href="#">decision-making skills</a> / 
+                        <a href="#">Leadership skills</a> / <a href="#">Mindfulness</a> / 
+                        <a href="#">self-awareness</a> / 7 minutes of reading
+                    </p>
+                    <p>
+                        The blog explores how mindfulness can enhance decision-making skills for leaders, 
+                        providing practical tips, real-world examples, and strategies to make more thoughtful, 
+                        clear, and effective decisions.
+                    </p>
+                    <a href="#" class="read-more">Read More »</a>
+                </div>
+            </div>
+
+            <!-- Second Post -->
+            <div class="post">
+                <img src="https://domf5oio6qrcr.cloudfront.net/medialibrary/8471/bigstock-spiritual-meditation-zen-garde-32174522.jpg" alt="Mindfulness Treatment for Anxiety">
+                <div class="post-content">
+                    <h2>Mindfulness: Treatment for Anxiety, Depression, and PTSD</h2>
+                    <p>
+                        <a href="#">Anxiety</a> / <a href="#">Depression</a> / 
+                        <a href="#">Mental Health</a> / <a href="#">Mindfulness</a> / 
+                        <a href="#">self-awareness</a> / 5 minutes of reading
+                    </p>
+                    <p>
+                        In this blog, we will explore the science behind mindful health treatment and how mindfulness 
+                        can be an effective tool for recovery from anxiety, depression, and PTSD.
+                    </p>
+                    <a href="#" class="read-more">Read More »</a>
+                </div>
+            </div>
+
+            <!-- Third Post -->
+            <div class="post">
+                <img src="https://katteb.com/wp-content/uploads/2023/10/1_GWlAuJoNaTjANZl4idfpLA-6625468.jpg" alt="Effective AI Prompts">
+                <div class="post-content">
+                    <h2>The Art of Creating Effective AI Prompts: Providing Relevant Context</h2>
+                    <p>
+                        <a href="#">Artificial Intelligence</a> / <a href="#">AI prompts</a> / 
+                        <a href="#">Prompt Engineering</a> / <a href="#">7 minutes of reading</a>
+                    </p>
+                    <p>
+                        Creating effective AI prompts is crucial for getting the most out of language models. 
+                        To create a highly responsive prompt, learn how to improve your messaging, which could 
+                        lead to better AI-generated results.
+                    </p>
+                    <a href="#" class="read-more">Read More »</a>
+                </div>
+            </div>
+
+            <!-- Fourth Post -->
+            <div class="post">
+                <img src="https://media.licdn.com/dms/image/D4E12AQHzk_kohrrrzg/article-cover_image-shrink_720_1280/0/1716259630536?e=2147483647&v=beta&t=-f-8mpN6QJPsnbInoxr4ObGbcl4VmdNtOyZgs4t_LtM" alt="Multi-Modal Prompting">
+                <div class="post-content">
+                    <h2>Multi-Modal Prompting: Enhancing AI Responses</h2>
+                    <p>
+                        <a href="#">Artificial Intelligence</a> / <a href="#">Multi-modal prompting</a> / 
+                        <a href="#">Prompt Engineering</a> / 5 minutes of reading
+                    </p>
+                    <p>
+                        Multi-modal prompting is the new evolution in AI, allowing users to input text, 
+                        images, and audio to get better AI-generated responses. This blog explores how 
+                        combining inputs leads to better user experiences.
+                    </p>
+                    <a href="#" class="read-more">Read More »</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        
+        
+    </footer>
+
+    <!-- JavaScript for Menu Toggle -->
+    <script>
+        document.getElementById('menu-icon').addEventListener('click', function() {
+            var navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        });
+        // Adjust header transparency on scroll
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// Detect when posts are in view and add hover effect
+const posts = document.querySelectorAll('.post');
+
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+window.addEventListener('scroll', () => {
+    posts.forEach(post => {
+        if (isInViewport(post)) {
+            post.classList.add('in-view');
+        } else {
+            post.classList.remove('in-view');
+        }
+    });
+});
+
+    </script>
+</body>
+<footer>
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>Mindfulness</h3>
+            <ul>
+                <li><a href="#">Mindfulness</a></li>
+                <li><a href="#">Kriya Yoga</a></li>
+                <li><a href="#">Science of Chakras</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>AI and Tech Resources</h3>
+            <ul>
+                <li><a href="#">AI and Tech Resources</a></li>
+                <li><a href="#">System Design</a></li>
+                <li><a href="#">DSA</a></li>
+                <li><a href="#">Books and Reading materials</a></li>
+                <li><a href="#">Software Security</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Company</h3>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Terms and Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Disclaimer</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Contact</h3>
+            <p>support@mindfulengineer.ai</p>
+            <div class="social-icons">
+                <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiXN9xSEe8unzPBEQOeAKXd9Q55efGHGB9BA&s" alt="Facebook" width="24" height="24"></a>
+                <a href="#"><img src="https://static01.nyt.com/images/2014/08/10/magazine/10wmt/10wmt-superJumbo-v4.jpg" alt="Twitter" width="24" height="24"></a>
+                <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMgfKNwFj7O66Qn-tIw87Yzo1A3DNh9rGq5g&s" alt="Instagram" width="24" height="24"></a>
+                <a href="#"><img src="https://img.freepik.com/premium-vector/linkedin-round-logo-vector_667864-108.jpg" alt="LinkedIn" width="24" height="24"></a>
+                <a href="#"><img src="https://yt3.googleusercontent.com/584JjRp5QMuKbyduM_2k5RlXFqHJtQ0qLIPZpwbUjMJmgzZngHcam5JMuZQxyzGMV5ljwJRl0Q=s900-c-k-c0x00ffffff-no-rj" alt="YouTube" width="24" height="24"></a>
+            </div>                
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>Copyright © 2024 Mindful Engineer</p>
+    </div>
+</footer>
+</html>
+
+
